@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            var obj = {
+                name: '张三'
+            }
+            obj.name = '张晋伟'
+            console.log(obj)
+        */
+
+        //如果有一种机制，保证每个属性的名字都是独一无二的，这样就从根本上防止了属性名冲突。这就是ES6引入`Symbol`的原因
+        //Symbol()括号里面是描述信息
+        //Symbol基本数据类型是独一无二的
+        // let s1 = Symbol(10)
+        // let s2 = Symbol(10)
+        // console.log(s1 == s2) //false
+
+        // let num1 = 10
+        // var num2 = 10
+        // console.log(num1 == num2) //true
+
+        // let obj = {}
+        //第一种写法
+        // obj[Symbol('name')] = '张三'
+        // obj[Symbol('name')] = '张晋伟'
+
+        //第二种写法
+        // let obj = {
+        //     [Symbol('name')]: '张三',
+        //     [Symbol('name')]: '杨帅'
+        // }
+        // console.log(obj)
+
+        // let s1 = Symbol(10)
+        // console.log(typeof s1) //symbol
+
+        let obj = {
+            [Symbol('name')]: '张三',
+            [Symbol('age')]: 18
+        }
+        //返回的结果是一个数组
+        // var res = Object.getOwnPropertySymbols(obj)
+        //把数组中的第一个元素获取出来
+        // console.log(res[0])
+        // console.log(obj[res[0]])
+
+        //注意点：不能直接去获取
+        console.log(obj[Symbol('name')]) //undefined
+    </script>
+</body>
+</html>

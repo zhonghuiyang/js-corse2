@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            display: block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <input type="text">
+    <button>查询</button>
+    <ul></ul>
+    <script src="js/ajax.js"></script>
+    <script>
+        let btn = document.querySelector('button')
+        let search = document.querySelector('input')
+        let ul = document.querySelector('ul')
+
+        btn.onclick = ()=>{
+            ajax_get({
+                url: 'http://route.showapi.com/2435-1',
+                query: {
+                    "showapi_appid": '753163', //这里需要改成自己的appid
+                    "showapi_sign": '4f4e65a7674f4e27a8fc1c907f9203fa',  //这里需要改成自己的应用的密钥secret
+                    "nuo": search.value
+                },
+                success(data){
+                    let res = JSON.parse(data)
+                    res = res.showapi_res_body.context
+                    res.forEach(item=>{
+                        ul.innerHTML += `
+                            <li>${item.desc}</li>
+                        `
+                    })
+                }
+            })
+        }
+    </script>
+</body>
+</html>

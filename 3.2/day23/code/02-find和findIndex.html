@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--H5新增的自定义属性方式 data-自定义属性名称=值-->
+    <div data-index="0"></div>
+    <script>
+        // let ages = [3, 10, 18, 20]
+        //find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。
+        // let res = ages.find(item=>{
+        //     return item>=18
+        // })
+        // console.log(res)
+
+        //findIndex() 方法返回传入一个测试条件（函数）符合条件的数组第一个元素位置。
+        // let index = ages.findIndex(item=>{
+        //     return item>=18
+        // })
+        // console.log(index)
+
+        //获取H5自定义属性 获取的元素.dataset.自定义属性名称
+        var box = document.querySelector('div')
+        console.log(box.dataset.index - 0)
+    </script>
+</body>
+</html>

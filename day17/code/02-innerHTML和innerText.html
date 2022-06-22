@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div></div>
+    <script>
+        /*
+            获取标记内容和设置标记内容
+            + innerHTML
+              => 它里面可以解析标记
+            + innerText
+              => 里面不能解析标记
+        */
+        var box = document.querySelector('div')
+        // box.innerHTML = 'hello'
+        // box.innerText = 'hello2'
+
+        // box.innerHTML = '<h1>张晋伟喜欢缪飞</h1>'
+
+        box.innerText = '<h1>张晋伟喜欢缪飞</h1>'
+    </script>
+</body>
+</html>

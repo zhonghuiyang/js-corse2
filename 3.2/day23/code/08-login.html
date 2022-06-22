@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text">
+    <input type="password">
+    <input type="button" value="登陆">
+    <span></span>
+    <script>
+        let btn = document.querySelector('input[type=button]')
+        let user = document.querySelector('input[type=text]')
+        let pass = document.querySelector('input[type=password]')
+        var des = document.querySelector('span')
+        btn.onclick = ()=>{
+            let xhr = new XMLHttpRequest()
+            //注意点：get请求的参数要写在地址的后面，要进行拼接
+            xhr.open('get', `api/login.php?username=${user.value}&password=${pass.value}`)
+            xhr.send()
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        let data = JSON.parse(xhr.responseText)
+                        // console.log(data.body.msg)
+                        // console.log(data.code)
+                        if(data.code == 200){
+                            des.innerHTML = data.body.msg
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

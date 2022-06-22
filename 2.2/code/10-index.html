@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        header{
+            width: 100%;
+            height: 50px;
+            background-color: #ccc;
+        }
+        header section{
+            width: 90%;
+            height: 100%;
+            background-color: hotpink;
+            margin: 0 auto;
+        }
+        header section .right{
+            width: 230px;
+            height: 100%;
+            background-color: yellow;
+            text-align: center;
+            line-height: 50px;
+            float: right;
+        }
+        header section .right span{
+            cursor: pointer;
+        }
+        header section .right b, em{
+            font-weight: normal;
+            font-style: normal;
+            margin-right: 10px;
+            display: none;
+            float: left;
+            margin-left: 20px;
+        }
+        header section .right em{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <section>
+            <div class="right">
+                <span>登陆</span>
+                <b>欢迎：张三</b>
+                <em>退出</em>
+            </div>
+        </section>
+    </header>
+    <script src="js/cookie.js"></script>
+    <script>
+        //获取元素
+        let span = document.querySelector('span')
+        let b = document.querySelector('b')
+        let em = document.querySelector('em')
+        //获取cookie
+        let user = getCookie('username')
+        //判断下有没有cookie
+        if(user){
+            //如果能进来说明有cookie的存在
+            span.style.display = 'none'
+            b.style.display = 'block'
+            em.style.display = 'block'
+            b.innerHTML = `欢迎：${user}`
+        }else{
+            span.style.display = 'block'
+            b.style.display = 'none'
+            em.style.display = 'none'
+            if(confirm('请去登陆')){
+                location.href = '09-免登陆.html'
+            }
+        }
+        span.onclick = ()=>{
+            location.href = '09-免登陆.html'
+        }
+        em.onclick = ()=>{
+            delCookie('username')
+            span.style.display = 'block'
+            b.style.display = 'none'
+            em.style.display = 'none'
+        }
+    </script>
+</body>
+</html>
+<!-- 
+    结构：登录 欢迎 退出
+    js：
+        cookie存在，则获取cookie，'欢迎 退出'显示   cookie不存在，'登录'显示
+        事件：
+            退出：删除cookie '登录'显示
+            登录：跳转页面
+ -->

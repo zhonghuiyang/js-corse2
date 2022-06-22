@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            js问题
+            + js是一个单线程，一次只能做一件事情，会造成代码阻塞
+            + 例如：前面的代码只要需要20秒，后面的代码必须等待20秒后再执行
+            + 所以引进了异步的概念
+              => 同时做某件事情，代码可以同时执行，不会受其他代码的影响
+              => 定时器和延时器就是异步执行
+              => setInterval()
+              => setTimeout()
+            + 异步
+              => 可以同时执行多个代码，代码之间不会相互影响，提高代码性能
+        */
+
+        setInterval(()=>{
+            console.log('3秒钟')
+        }, 3000)
+        setInterval(()=>{
+            console.log('2秒钟')
+        }, 2000)
+        setInterval(()=>{
+            console.log('1秒钟')
+        }, 1000)
+    </script>
+</body>
+</html>

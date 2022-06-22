@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #e5e5e5;
+        }
+        ul{
+            width: 1200px;
+            min-height: 300px;
+            margin: 20px auto;
+        }
+        ul li{
+            list-style: none;
+            width: 236px;
+            height: 304px;
+            background-color: #fff;
+            float: left;
+            margin: 20px;
+        }
+        ul li .pic{
+            height: 180px;
+            position: relative;
+        }
+        ul li .pic img{
+            width: 160px;
+            height: 160px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        ul li p{
+            font-size: 14px;
+            text-align: center;
+            line-height: 26px;
+        }
+        ul li p.price{
+            color: #ff6700;
+        }
+        ul li button{
+            display: block;
+            margin: 10px auto;
+        }
+        .count{
+            width: 100px;
+            height: 120px;
+            background-color: orange;
+            position: absolute;
+            right: 0;
+            top: 300px;
+            font-size: 14px;
+            text-align: center;
+            line-height: 100px;
+        }
+        .count span{
+            color: red;
+            font-weight: bold;
+            margin: 2px;
+        }
+    </style>
+</head>
+<body>
+    <ul></ul>
+    <a href="12-购物车页面.html">
+        <div class="count">
+            商品共<span>0</span>件
+        </div>
+    </a>
+    <script src="js/product_list.js"></script>
+    <script>
+        //获取元素
+        let ul = document.querySelector('ul')
+        let span = document.querySelector('span')
+        //获取数据
+        let data = product_list
+        //渲染页面
+        function render(){
+            data.forEach(item=>{
+                //data-id=值 这是H5新增的绑定自定义属性的方法
+                ul.innerHTML += `
+                    <li>
+                        <div class="pic">
+                            <img src="${item.url}">
+                        </div>
+                        <p class="title">${item.title}</p>
+                        <p class="des">${item.des}</p>
+                        <p class="price">${item.price}</p>
+                        <button data-id=${item.id}>加入购物车</button>
+                    </li>
+                `
+            })
+        }
+        render()
+        //做事件委派
+        ul.onclick = (e)=>{
+            let target = e.target || e.srcElement
+            //判断是否点击的是按钮标记
+            if(target.nodeName == 'BUTTON'){
+                //获取当前按钮的id
+                let id = target.dataset.id - 0
+                //获取当前商品列表的数据
+                let goods = data.find(item=>{return item.id == id})
+                
+                //先查看购物车里面有没有数据 把数据存储在localStorage里面
+                let list = JSON.parse(localStorage.getItem('cart')) || []
+                if(!list.length){
+                    // console.log('没有数据')
+                    //应该先把数据存储进数组里面
+                    list.push(goods)
+                    goods.cart_num = 1
+                }else{
+                    // console.log('有数据')
+                    //如果有数据，先查看当前数组里面有没有这条重复的数据
+                    let res = list.some(item=>{return item.id == id})
+                    //如果有相同的数据就让其数量自增
+                    if(res){
+                        //查找这条数据在数组里面的下标
+                        let index = list.findIndex(item=>{return item.id == id})
+                        list[index].cart_num++
+                    }else{
+                        //如果没有相同的数据就把这条数据添加进数组里面
+                        list.push(goods)
+                        goods.cart_num = 1
+                    }
+                }
+                localStorage.setItem('cart', JSON.stringify(list))
+
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- 
+    渲染商品列表，加入购物车(加入一个数组里面)，存储在localStorage中
+        js：
+            动态渲染页面
+            委托绑定事件
+                根据自定义属性找到点击商品数据
+                    data-id  target.dataset.id  find
+                定义出数组
+
+ -->

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //数组原型，在数组这个内置对象原型上面扩展方法
+        
+        //注意点：在实际工作中不推荐自己在原型上面扩展方法
+        Array.prototype.getSum = function(){
+            let sum = 0
+            for(let i=0; i<this.length; i++){
+                sum += this[i]
+            }
+            return sum
+        }
+
+        let arr = [10, 20, 30]
+        var res = arr.getSum()
+        console.log(res)
+
+        console.log(Array.prototype)
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="04-index.html">去首页</a>
+    <script>
+        //创建一个cookie
+        //注意点1：cookie必须在服务器环境下打开
+        //注意点2：在phpStudy这个服务器软件下文件命名不要直接给index，不管后缀名是什么，因为服务区会默认直接找到index页面打开
+        //注意点3：cookie要求存储的数据必须是字符串格式
+        //作用：http是无状态的，一个页面的数据无法被其他页面所共享，所以cookie可以解决这个问题。cookie相当于是存储数据的容器
+        
+        //cookie一条一条存储数据
+        // document.cookie = 'username=张三'
+        // document.cookie = 'password=123'
+
+        //一次性存储多条数据
+        let data = JSON.stringify([{username: '张三', password: 123}])
+        // document.cookie = 'data='+data   改为现阶段的方法：模板字符串
+        document.cookie = `data=${data}`
+
+    </script>
+</body>
+</html>
+
+<!-- 
+    错误：
+        1.Value为[object Object]
+            let data = [{username: '张三', password: 123}]
+            document.cookie = 'data='+data
+
+            解决：在前面加上 JSON.stringify()
+                
+-->

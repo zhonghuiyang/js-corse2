@@ -1,0 +1,9 @@
+<li>
+                        <div class="pic">
+                            <img src="${item.url}">
+                        </div>
+                        <p class="title">${item.title}</p>
+                        <p class="des">${item.des}</p>
+                        <p class="price">${item.price}</p>
+                        <button data-id=${item.id}>加入购物车</button>
+                    </li> 

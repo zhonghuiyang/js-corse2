@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="js/ajax.js"></script>
+    <script>
+        /*
+            需求：比如我们发送三个 ajax 请求
+            + 第一个正常发送
+            + 第二个请求需要第一个请求的结果中的某一个值作为参数
+            + 第三个请求需要第二个请求的结果中的某一个值作为参数
+        */
+        ajax_get({
+            url: 'api/a.php',
+            success(data){
+                ajax_get({
+                    url: 'api/b.php',
+                    query: {a: data},
+                    success(data2){
+                        ajax_get({
+                            url: 'api/c.php',
+                            query: {b: data2},
+                            success(data3){
+                                console.log(data3)
+                            }
+                        })
+                    }
+                })
+            }
+        })
+
+    </script>
+</body>
+</html>

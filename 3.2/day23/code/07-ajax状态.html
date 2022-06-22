@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- <form action="">
+        <input type="text">
+        <input type="password">
+        <input type="submit">
+    </form> -->
+
+    <button id="btn">request</button>
+    <script>
+        /*
+            ajax
+            + 作用：就是前后端交换数据的一种方式
+            + ajax是几个技术的结合
+              => http
+              => xml
+              => ajax
+            + 前后端交换
+              => 表单，只能向服务器发送数据
+              => ajax不仅向服务器发送数据，也可以接收服务器返回的数据，在页面不刷新的情况下拿到数据
+        */
+
+        let btn = document.querySelector('#btn')
+        btn.onclick = ()=>{
+            /* 
+                xhrObj.readyState - 返回当前请求的状态
+                xhr.readyState = 0时-未初始化,对象已建立,尚未调用open()
+                xhr.readyState = 1时-初始化,对象建立未调用send()
+                xhr.readyState = 2时-发送数据,send()方法调用,但是当前的状态及http头未知,请求未完成
+                xhr.readyState = 3时-数据传输中,接受部分数据
+                xhr.readyState = 4时-响应内容解析完成
+            */
+           
+            //创建ajax对象
+            let xhr = new XMLHttpRequest()
+
+            //请求信息
+            /*
+                参数1表示请求方式 get || post
+                参数2表示请求地址 后台地址（api---接口）
+                参数3表示同步或者异步 true false，默认是异步的，可以不写
+            */
+            xhr.open('get', 'api/request.php')
+          
+            //发送
+            xhr.send()
+            
+            //监听状态
+            xhr.onreadystatechange = ()=>{
+                // console.log(xhr.readyState)
+                // console.log(xhr.responseText)
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        console.log(xhr.responseText)
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            http
+            + 超文本传输协议
+            + http、https（加密）
+            + request发送请求
+              => Network 浏览器控制台的选项里面看到请求信息
+              => request header 请求头
+              => 请求方式
+              => 请求地址
+              => 协议和版本号
+              => 查询字符串信息
+              => response header 响应头
+              => 请求成功
+              => 会把咱们的结果返回
+            + http协议
+              => 问题：是无状态的，通过三次握手，四次挥手，当一个请求完成后会自动的断开连接
+              => 例如：如果在a页面里面使用了数据，无法在b页面使用
+              => cookie
+            cookie
+            + 设置cookie
+              => document.cookie
+              => document.cookie = '属性=属性值; expires=过期时间; path=/'
+            + 读取cookie
+              => document.cookie
+              => 使用split进行切割
+            7天免登陆思路
+            + 给复选框绑定事件
+              => 非空验证 user.value pass.value 
+              => 获取复选框的状态
+              => 判断，如果是选中的，保存cookie，setCookie()，如果没有选中删除cookie，delCookie()
+            + 处理赋值
+              => 判断有没有cookie存在，如果有，给文本框和复选框赋值，如果没有就文本框的值为空
+              => if(getCookie('username') == undefined)
+              => 注意点：因为咱们在封装获取cookie的时候，返回的是一个对象，如果函数没有可用返回的值不就是undefined?
+            + 给登陆按钮绑定事件
+              => 非空验证
+              => 使用cookie存储用户名
+              => 跳转页面
+            + 获取cookie
+            + 判断，如果cookie存在就把用户名显示出来，其他的隐藏，如果没有，把用户名隐藏，显示登陆（可用让用户选中是否跳转）
+            + 点击登陆，跳转到登陆页面...
+        */
+    </script>
+</body>
+</html>

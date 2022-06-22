@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>主页面</h1>
+    <a href="html/login.html">去登陆页面</a>
+    <script>
+        /*
+            cookie的路径
+            + cookie会根据不同的路径限定访问数据
+            + 规则:
+              => 内层的可以访问外层的数据
+              => 外层的不能访问内层的数据
+              => 注意：'内外层' 包含 '父级子级'
+        */
+        // document.cookie = 'name=张三'
+
+        // console.log(document.cookie)
+
+        //encodeURIComponent对中文进行转码
+        document.cookie = `name=${encodeURIComponent('张晋伟')}`
+
+        //decodeURIComponent对中文解析解码
+        console.log(decodeURIComponent(document.cookie))
+    </script>
+</body>
+</html>
+
+<!-- 
+    总结：document.cookie = 'num=123; path=/'  "/"表示根路径，即在同一浏览器下，所有目录都可访问
+ -->

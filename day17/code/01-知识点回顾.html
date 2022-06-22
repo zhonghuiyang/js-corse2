@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            轮播图
+            + 动态的创建小圆圈
+              => 遍历 for，根据图片的数量
+              => 创建li标记  createELement()
+              => 给创建的元素进行赋值操作 innerHTML 
+              => 追加元素 appendChild()
+              => 遍历外面 cloneNode(true) 深克隆
+            + 点击小圆圈切换图片带有动画
+              => 封装的animation动画小插件要引入
+              => 遍历绑定事件
+              => 排他思想，在遍历的时候需要绑定自定义属性 index
+              => 在事件里面获取下标 this.index
+              => 使用下标乘以一个li标记的宽度(500px) ul.children[0].offsetWidth
+              => 当咱们点击小圆圈按钮的时候同步（和下面的左右按钮）下标，num = index current = index
+            + 点击右侧按钮切换图片
+              => 开关（判断）
+              => 下标自增 num++
+              => 调用animation()动画函数
+              => 在回调函数里面，进行判断  当num==ul.children.length-1  把下标改成num=0 ul.style.left=0
+              => ...
+             + 点击左侧按钮切换图片
+              => 开关（判断）
+              => 下标自增 num--
+              => 调用animation()动画函数
+              => 在回调函数里面，进行判断  当num==0 把下标改成num=ul.children.length-1  ul.style.left=num*ul.children[0].offsetWidth+'px'
+              => ...
+            + ...
+            swiper
+            + 插件，专门做轮播和各种图片切换的
+            + 引入css文件
+            + 引入js文件
+            + 如果文件名称里面带min单词都是压缩文件，把代码里面的注释和空格都取消掉了
+            + 查看文档（api）或者例子
+            ES5数组方法
+            + some() 一个条件满足即可
+            + every() 需要所以的条件都满足
+            + reduce() 累加器，从第一个依次和后面的进行相加（使用的是前面的结果和后面的相加）
+            ES6方法
+            + Array.from()
+            + 把其他的类型（字符串、伪(类)数组）转成数组
+        */
+    </script>
+</body>
+</html>

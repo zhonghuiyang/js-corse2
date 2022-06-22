@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: #e5e5e5;
+        }
+        ul li{
+            list-style: none;
+            width: 234px;
+            height: 300px;
+            background-color: #fff;
+            float: left;
+            margin: 30px;
+            text-align: center;
+            font-size: 12px;
+        }
+        ul li img{
+            width: 160px;
+            height: 160px;
+            margin-top: 20px;
+        }
+        ul li p{
+            line-height: 30px;
+        }
+        .price{
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        var miData = [
+            {
+                id: 1,
+                url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0bcd64f412dfb5e15695fa96d21ecb23.png?thumb=1&w=200&h=200&f=webp&q=90',
+                title: 'Xiaomi Civi 1S',
+                des: '原生美肌人像｜奇迹阳光动人新色｜骁龙778G Plus',
+                price: 2299
+            },
+            {
+                id: 2,
+                url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d764150a470174741d8b0b04515f7a78.jpg?thumb=1&w=200&h=200&f=webp&q=90',
+                title: 'Redmi 10A',
+                des: '大电量、大音量、大屏幕',
+                price: 699
+            },
+            {
+                id: 3,
+                url: 'https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/18d2099cb0b05bbd23cb1915dfc9d0d6.jpg?thumb=1&w=200&h=200&f=webp&q=90',
+                title: 'Redmi K50 Pro',
+                des: '2K直屏的狠旗舰',
+                price: 2999
+            }
+        ]
+
+        var str = `<ul>`
+        for(var i=0; i<miData.length; i++){
+            str += `
+                <li>
+                    <img src="${miData[i].url}" alt="">
+                    <h3>${miData[i].title}</h3>
+                    <p>${miData[i].des}</p>
+                    <p class="price">${miData[i].price}元起</p>
+                </li>
+            `
+        }
+        str += `</ul>`
+        document.write(str)
+    </script>
+</body>
+</html>

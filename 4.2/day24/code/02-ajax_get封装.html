@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            ajax_get封装
+            + @param {string} url 表示接口（后端地址）
+            + @param {object} query 表示要传递给后端的参数
+            + @param {function} success 表示成功时的回调 
+            + @param {function} error 表示失败时的回调 
+        */
+        function ajax_get(options){
+            //先判断下地址是否存在
+            if(!options.url){
+                alert('地址是必要的！')
+                return false
+            }
+            //创建ajax实例化对象
+            let xhr = new XMLHttpRequest()
+
+            //判断下参数是否存在
+            if(options.query){
+                //处理把对象转成查询字符串
+                //声明一个字符串使用它去拼接
+                let str = '?'
+                //遍历对象
+                for(let key in options.query){
+                   str += `${key}=${options.query[key]}`
+                   str += '&'
+                }
+                //把最后一个拼接多余的&符号去除掉
+                str = str.slice(0, -1)
+                //请求信息
+                xhr.open('get', options.url+str)
+            }else{
+                xhr.open('get', options.url)
+            }
+            xhr.send()
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        options.success && options.success(xhr.responseText)
+                    }else{
+                        options.error && options.error()
+                    }
+                }
+            }
+        }
+    
+        ajax_get({
+            url: 'api/login.php',
+            query: {username: '张三', password: 123},
+            success(data){
+                console.log(data)
+            },
+            error(){
+                alert('请求失败')
+            }
+        })
+
+    </script>
+</body>
+</html>

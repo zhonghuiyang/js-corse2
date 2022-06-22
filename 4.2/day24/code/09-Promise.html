@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            Promise
+            + 表示的是一个承诺，承诺帮助咱们做某些事情，它是专门用来解决回调地狱问题的
+            + 异步代码可以同时让咱们代码执行，避免代码阻塞问题，但是需要大量的回调所以代码非常不优雅
+            + Promise可以让咱们写的异步像同步代码那样排列
+              => 异步代码的本质不改变
+              => 让咱们代码的写法看起来像同步代码
+        */
+        //resolve表示成功
+        //reject表示失败
+        let p = new Promise((resolve, reject)=>{
+            let num = 5
+            if(num >= 10){
+                resolve(666)
+            }else{
+                reject()
+            }
+        })
+        //链式调用，链式写法
+        p.then((data)=>{
+            alert('成功了')
+            alert(data)
+        })
+        .catch(()=>{
+            alert('失败了')
+        })
+        //表示无论成功还是失败都会执行
+        .finally(()=>{
+            alert('无论怎么样，我都会执行！')
+        })
+    </script>
+</body>
+</html>

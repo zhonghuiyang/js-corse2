@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //之前的创建对象的方式
+        //这两种方式无法传递参数，灵活性不够
+        /*
+            let obj = {
+                name: '张三',
+                age: 18
+            }
+            let obj2 = new Object()
+            obj2.name = '李思'
+            obj2.age = 20
+        */
+        
+        //工厂方式创建对象
+        // function factory(name, water){
+        //     //创建一个对象
+        //     let obj = new Object()
+        //     //给对象进行赋值
+        //     obj.name = name
+        //     obj.water = water
+        //     //添加方法
+        //     obj.juicing = function(){
+        //         console.log(this.name + '汁')
+        //     }
+        //     //把对象返回给外界
+        //     return obj
+        // }
+
+        function factory(name, water){
+            //创建一个对象
+            let obj = {
+                name: name,
+                water: water,
+                juicing(){
+                    console.log(this.name + '汁')
+                }
+            }
+            //把对象返回给外界
+            return obj
+        }
+
+        //创建对象
+        let peach = factory('桃子', 5)
+        console.log(peach)
+        peach.juicing()
+
+        let apple = factory('苹果', 2)
+        apple.juicing()
+
+    </script>
+</body>
+</html>

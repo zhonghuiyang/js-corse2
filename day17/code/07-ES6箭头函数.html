@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //注意点：箭头函数只能用于赋值式声明函数
+        // let fn = function(){
+        //     console.log('hello')
+        // }
+        // fn()
+
+        // let fn = ()=>{
+        //     console.log('hello')
+        // }
+        // fn()
+
+        //传递参数，如果只有一个形参的时候可以省略括号
+        // let fn = a=>{
+        //     console.log('hello')
+        //     console.log(a)
+        // }
+        // fn(10)
+
+        //注意点: 省略了花括号，还有return
+        // let fn = (a)=> a + 10
+        // console.log(fn(10))
+
+        //注意点：如果要省略return，花括号必须取消
+        // let fn = (a)=> {a + 10}
+        // console.log(fn(10))
+
+        // let arr = [3, 2, 1]
+
+        // let res = arr.sort(function(){
+
+        // })
+
+        // let res = arr.sort((a, b)=>{
+        //     return a - b
+        // })
+        // console.log(res)
+
+        // console.log(arr)
+
+        //箭头函数没有自己的this，这个this指向的是上一层代码
+        let obj = {
+            name: '张晋伟',
+            move: function(){
+                setTimeout(()=>{
+                    console.log(this.name)
+                }, 2000)
+            }
+        }
+        obj.move()
+
+    </script>
+</body>
+</html>

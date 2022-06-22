@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let info = new Set(['张晋伟', '杨帅', '缪飞', '张晋伟', '缪飞'])
+        //console.log(info)
+        // console.log(typeof info) //object
+        /*
+            - `add(value)`：添加一个值，返回Set结构本身
+            - `delete(value)`：删除某个值，返回布尔值
+            - `has(value)`：返回布尔值，表示是否是成员
+            - `clear()`：清除所有成员，无返回值
+        */
+        // console.log(info.size)
+
+        // info.add('hello')
+        // info.add('嘿嘿')
+        // info.delete('张晋伟') 
+
+        // var res = info.has('张晋伟')
+        // console.log(res)
+
+        info.clear()
+        console.log(info)
+    </script>
+</body>
+</html>

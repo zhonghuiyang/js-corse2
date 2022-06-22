@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // function Person(name, age){
+        //     this.name = name
+        //     this.age = age
+        //     this.say()
+        // }
+        // Person.prototype.say = function(){
+        //     console.log(this)
+        //     console.log(this.name + '喜欢缪飞')
+        // }
+        // let p1 = new Person('张晋伟', 12)
+        // p1.say()
+
+        // new Person('张晋伟', 12).say()
+
+        //构造函数里面的this指向的是实例化对象，因为方法最终是由实例化对象调用的
+        // new Person('张晋伟', 12)
+
+        function Person(name, age){
+            this.name = name
+            this.age = age
+        }
+
+        /*
+            Person.prototype.say = function(){
+                console.log(this.name + '喜欢缪飞')
+            }
+            Person.prototype.rg = function(){
+                console.log(this.name + '喜欢晚上去公园里跑步')
+            }
+        */
+
+        //注意点：这种写法比较专业，但是破坏了原有三角恋关系，必须重新指定constructor
+        Person.prototype = {
+            constructor: Person,
+            say(){
+                console.log(this.name + '喜欢缪飞')
+            },
+            rg(){
+                console.log(this.name + '喜欢晚上去公园里跑步')
+            }
+        }
+        let p1 = new Person('张晋伟', 12)
+        // p1.say()
+        // p1.rg()
+
+        console.log(Person.prototype)
+        console.log(p1.__proto__)
+        console.log(Person.prototype.constructor)
+
+    </script>
+</body>
+</html>

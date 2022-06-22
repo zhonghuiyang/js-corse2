@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap{
+				width: 600px;
+				height: 600px;
+				/* border: 1px solid; */
+				margin: 50px auto;
+				position: relative;
+			}
+			.wrap .smallBox{
+				width: 200px;
+				height: 200px;
+				border: 1px solid red;
+				position: absolute;
+			}
+			.wrap .smallBox img{
+				width: 200px;
+				height: 200px;
+			}
+			.wrap .smallBox span{
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				width: 80px;
+				height: 80px;
+				background: rgba(200,200,200, 0.6);
+				left: 0;
+				top: 0;
+				cursor: move;
+				display: none;
+			}
+			.wrap .bigBox{
+				width: 200px;
+				height: 200px;
+				border: 1px solid;
+				position: absolute;
+				left: 230px;
+				top: 0;
+				overflow: hidden;
+				display: none;
+			}
+			.wrap .bigBox img{
+				width: 400px;
+				height: 400px;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<div class="smallBox">
+				<img src="img/pyy.webp" alt="">
+				<span></span>
+			</div>
+			<div class="bigBox">
+				<img src="img/pyy.webp" >
+			</div>
+		</div>
+        <script type="text/javascript">
+            function Zoom(){
+                //把获取元素当成对象的属性
+                this.smallBox = document.querySelector('.smallBox')
+                this.mask = document.querySelector('.smallBox>span')
+                this.bigBox = document.querySelector('.bigBox')
+                this.pic = document.querySelector('.bigBox>img')
+                //调用初始化方法即可
+                this.init()
+            }
+            //表示初始化，用来管理咱们方法的
+            Zoom.prototype.init = function(){
+                this.over()
+                this.out()
+                this.move()
+            }   
+            Zoom.prototype.over = function(){
+                //this备份，在能找到this表示那个对象的地方，把this使用变量存储，方面在其他地方使用
+                // let that = this
+                // this.smallBox.onmouseover = function(){
+                //     that.mask.style.display = 'block'
+                //     that.bigBox.style.display = 'block'
+                // }
+
+                this.smallBox.onmouseover = ()=>{
+                    this.mask.style.display = 'block'
+                    this.bigBox.style.display = 'block'
+                }
+            }
+            Zoom.prototype.out = function(){
+                this.smallBox.onmouseout = ()=>{
+                    this.mask.style.display = 'none'
+                    this.bigBox.style.display = 'none'
+                }
+            }
+            Zoom.prototype.move = function(){
+                this.smallBox.onmousemove = (e)=>{
+                    //获取坐标
+                    let x = e.clientX - this.smallBox.offsetParent.offsetLeft - this.mask.offsetWidth/2
+                    let y = e.clientY - this.smallBox.offsetParent.offsetTop - this.mask.offsetHeight/2
+
+                    //边界值判断
+                    if(x<=0){
+                        x = 0
+                    }else if(x>=this.smallBox.offsetWidth - this.mask.offsetWidth){
+                        x = this.smallBox.offsetWidth - this.mask.offsetWidth
+                    }
+                    if(y<=0){
+                        y = 0
+                    }else if(y>=this.smallBox.offsetHeight - this.mask.offsetHeight){
+                        y = this.smallBox.offsetHeight - this.mask.offsetHeight
+                    }
+
+                    //进行赋值操作
+                    this.mask.style.left = x + 'px'
+                    this.mask.style.top = y + 'px'
+
+                    //进行计算比例
+                    let w =  x / (this.smallBox.offsetWidth - this.mask.offsetWidth)
+                    let h =  y / (this.smallBox.offsetHeight - this.mask.offsetHeight)
+                    
+                    //进行赋值操作
+                    this.pic.style.left = -w * (this.pic.offsetWidth - this.bigBox.offsetWidth) + 'px'
+                    this.pic.style.top = -h * (this.pic.offsetHeight - this.bigBox.offsetHeight) + 'px'
+                }
+            }
+            new Zoom()
+            
+        </script>
+	</body>
+</html>

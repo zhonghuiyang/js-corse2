@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            cookie
+            + 默认过期时间是会话级别的，浏览器关闭就没有了
+            + cookie默认时间是世界标准时间，咱们的时间比世界时间快8个小时
+        */
+        // let d = new Date()
+        // d.setDate(d.getDate()+3)
+        // console.log(d)
+        // let t = d.toUTCString()
+        // console.log(t)
+
+
+        let d = new Date()
+        d.setDate(d.getDate()+3)    //过期时间3天
+        let t = d.toUTCString()
+        document.cookie = `a=1; expires=${t}`
+    </script>
+</body>
+</html>
+<!-- 
+    0.使用setDate实现日期的相加减，接收一个整数，如果这个整数大于
+        当前时间对象中月份的日期上线，则自动往前进位，余数为下个月的日期
+    1.getDate获取天
+    2.我们使用的时间是'东八区'时间，即直接用 let d = new Date() 获取的时间 比世界时间 | cookie时间快8小时
+        toUTCString()方法可以直接转为标准时区（世界时间），转成了系统时间
+ -->

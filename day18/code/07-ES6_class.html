@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            ES6 class
+            + class 类
+            + js中的class类其实不是真正的类，它只是一种语法糖
+            + js里面没有类的概念或者类的写法，但是类确实比较好用，js也希望使用class，所以它把构造函数进行改造，变成了class写法而已，
+            把这种情况称之为语法糖
+            + 变成class写法后，会方便很多
+            class类
+            + 要遵循三角恋关系
+            + prototype
+            + constructor
+            + __proto__
+        */
+        class Factory{
+            //构造器，写在它里面的代码相当于写在了构造函数内部
+            constructor(name, water){
+                this.name = name
+                this.water = water
+            }
+            //把方法写在这里就相当于写在了原型对象里面
+            juicing(){
+                console.log(this.name + '汁')
+            }
+        }
+        // console.log(Factory.prototype)
+        let apple = new Factory('苹果', 2)
+        let peach = new Factory('桃子', 5)
+
+        console.log(apple.juicing == peach.juicing) //true
+
+        console.log(peach.__proto__)
+        console.log(Factory.prototype.constructor)
+    </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //封装：不考虑内部实现，只考虑功能实现
+        /*
+            let obj = {
+                add(a, b){
+                    return a + b
+                }
+            }
+            let res = obj.add(10, 20)
+            console.log(res)
+        */
+        
+        //继承：从已有对象上，继承出新对象
+        /*
+            let obj = {
+                name: '张三',
+                age: 18
+            }
+            let newObj = {}
+            for(let key in obj){
+                newObj[key] = obj[key]
+            }
+            console.log(newObj)
+        */
+        
+        //多态：一个父类的引用变量，可以指向其任意一个子类对象。简单来说就是同一操作，作用于不同的对象，会产生不同的解释和行为
+        let arr = [10, 20, 30]
+        let res1 = arr.toString()
+        console.log(res1)
+
+        let obj = {
+            name: '张三',
+            age: 18
+        }
+        let res2 = obj.toString()
+        console.log(res2)  //[object Object] 第一个值表示数据类型 第二个值表示对象（数据）本身
+    </script>
+</body>
+</html>

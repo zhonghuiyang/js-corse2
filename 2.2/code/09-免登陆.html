@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input{
+            display: block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h3>这是登陆页面，其他的样式自己想象</h3>
+    <input type="text">
+    <input type="password">
+    <input type="checkbox">
+    <input type="button" value="登陆">
+    <script src="js/cookie.js"></script>
+    <script>
+        //获取元素
+        let user = document.querySelector('input[type=text]')
+        let pass = document.querySelector('input[type=password]')
+        let bbox = document.querySelector('input[type=checkbox]')
+        let btn = document.querySelector('input[type=button]')
+    
+        //绑定事件
+        bbox.onclick = ()=>{
+            //非空验证
+            if(user.value == '' || pass.value == ''){
+                alert('请输入内容')
+                return false
+            }
+            //先获取复选框的状态
+            let type = bbox.checked
+            if(type){
+                //存储cookie
+                setCookie('username', user.value, 7)
+                setCookie('password', pass.value, 7)
+                setCookie('isSelect', type, 7)
+            }else{
+                //如果复选框是没有选中的，就把cookie删除掉
+                delCookie('username')
+                delCookie('password')
+                delCookie('isSelect')
+            }
+        }
+
+        //进行赋值处理
+        function changeValue(){
+            if(getCookie('username') == undefined || getCookie('password') == undefined){
+                user.value = ''
+                pass.value = ''
+            }else{
+                user.value = getCookie('username')
+                pass.value = getCookie('password')
+                bbox.checked = getCookie('isSelect')
+            }
+        }
+        changeValue()
+
+        //点击登陆按钮进行跳转首页
+        btn.onclick = ()=>{
+            // //非空验证
+            if(user.value == '' || pass.value == ''){
+                alert('请输入内容')
+                return false
+            }
+            setCookie('username', user.value)
+            location.href = '10-index.html'
+        }
+    </script>
+</body>
+</html>
+<!-- 
+    结构：用户名框 密码框 免登录复选框 登录按钮
+    js:
+        复选框事件：
+            (非空验证) 
+            获取状态，true则存储cookie，false则删除
+        复选框--免登录功能：
+            新建函数
+            获取cookie
+                有值，说明复选框选中，cookie赋值输入框
+                无值，说明复选框未选中，或者刚进页面，则赋值为'')
+        登录按钮：
+            非空验证
+            cookie存储name
+            跳转
+        
+ -->

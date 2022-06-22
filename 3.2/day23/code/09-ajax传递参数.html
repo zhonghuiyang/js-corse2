@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>请求</button>
+    <script>
+        let btn = document.querySelector('button')
+        btn.onclick = ()=>{
+            let xhr = new XMLHttpRequest()
+            //注意点：get请求的参数要写在地址的后面，要进行拼接
+            xhr.open('get', 'api/request.php?username=缪飞&password=123')
+            xhr.send()
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        console.log(JSON.parse(xhr.responseText))
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

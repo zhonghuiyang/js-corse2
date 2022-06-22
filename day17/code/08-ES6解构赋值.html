@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let [a, b, c] = [10, 20, 30]
+        // console.log(a, b, c)
+
+        // let [a, , c] = [10, 20, 30]
+        // console.log(a, c)
+
+        // let [a, b] = [['hello', '嘿嘿'], {name: '张三'}]
+        // console.log(a, b)
+
+        // let [a, b, c, d, e] = 'hello'
+        // console.log(a, b, c, d, e)
+
+        //对象解构
+        // let obj = {
+        //     name: '张三',
+        //     age: 18
+        // }
+        // console.log(obj.name)
+        // console.log(obj.age)
+
+        //注意点：对象解构出来的属性名，必须和原有对象里面的属性名一致
+        // let {name, age} = obj
+        // console.log(name, age)
+
+        // let info = {
+        //     obj: {
+        //         name: '张晋伟',
+        //         age: 18
+        //     }
+        // }
+
+        // console.log(info.obj.name)
+
+        // let {obj} = info
+        // console.log(obj.name)
+
+        // let {name} = info.obj
+        // console.log(name)
+
+        // var a = 10
+        // var b = 20
+        // console.log(a, b);
+        // [a, b] = [b, a];
+        // console.log(a, b)
+
+        //交换两个变量的值
+        // let a = 10
+        // let b = 20
+        // console.log(a, b);
+        // [a, b] = [b, a];
+        // console.log(a, b)
+
+        //问题1：在let和const声明变量的方式中，不能出现重复的两个变量
+        // let a = 10
+        // let a = 20
+        // console.log(a)
+
+        // var a = 10
+        // var a = 20
+        // console.log(a)
+
+        //问题2：在js代码风格中，一种是要加分号，一种是不加分号的。如果在不加分号的代码中，遇到中括号和小括号时会报错
+        // console.log()[] //两个连接在一起，js引擎无法解析代码，或者无法理解这种语法的所以报错
+
+    </script>
+</body>
+</html>

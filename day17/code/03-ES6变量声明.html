@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+
+    <script>
+        /*
+            变量声明
+            + 之前使用var关键字
+            + ES6新增了两个声明变量的关键字
+              => let
+              => const 常量，不能修改的量
+              => 块级作用域，没有了变量声明提升
+        */
+        
+        // let a = 10
+        // console.log(a)
+
+        //块级作用域：以一个花括号为界限，是一个作用域
+        // {
+        //     let b = '张晋伟'
+        // }
+        // console.log(b)
+
+        //问题：循环里面有事件处理函数，先执行完毕循环后再去执行事件处理函数里面的内容
+        //var btn = document.querySelectorAll('button')
+        // for(var i=0; i<btn.length; i++){
+        //     btn[i].onclick = function(){
+        //         console.log(i)
+        //     }
+        // }
+
+        // for(let i=0; i<btn.length; i++){
+        //     btn[i].onclick = function(){
+        //         console.log(i)
+        //     }
+        // }
+      
+        // const c = '杨帅'
+        // c = '缪飞'
+        // console.log(c)
+
+        // const swiper = '我引入了一个swiper文件'
+        // swiper = null
+        // console.log(swiper)
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //注意点：通过两段代码比较，大家发现对象当做参数更为灵活方便，所以推荐使用
+        // function fn(options){
+        //     console.log(options.url)
+        //     for(let key in options.query){
+        //         console.log(options.query[key])
+        //     }
+        // }
+        // fn({
+        //     query: {username: '张三', password: 123},
+        //     url: 'api/login.php'
+        // })
+
+        // function fn(url, query){
+        //     console.log(url)
+        //     console.log(query)
+        // }
+        // fn({username: '张三', password: 123}, 'api/login.php')
+    </script>
+</body>
+</html>

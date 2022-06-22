@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //构造函数，通过函数构造一个对象
+        //new Array()
+        //new Date()
+        //new Object()
+
+        //使用构造函数
+        //构造函数其实就是工厂函数创建对象的一种简化形式
+        /*
+            注意点：
+            + 构造函数为了和普通函数做区分，要求首字母必须大写
+            + 使用构造函数创建对象，必须使用new关键字
+        */
+        function Factory(name, water){
+            this.name = name
+            this.water = water
+            this.juicing = function(){
+                console.log(this.name + '汁')
+            }
+        }
+        //把构造函数创建出来的对象称之为实例化对象
+        let peach = new Factory('桃子', 5)
+        console.log(peach)
+        peach.juicing()
+
+        /*
+            构造函数创建：
+            function Factory(name, water){
+                //第一步：创建一个对象
+                let obj = {}
+                //第二步：把对象赋值给this
+                let this = obj
+                this.name = name
+                this.water = water
+                this.juicing = function(){
+                    console.log(this.name + '汁')
+                }
+                //第三步：把this返回给外界
+                return this
+            }
+        */
+    </script>
+</body>
+</html>

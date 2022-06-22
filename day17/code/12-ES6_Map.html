@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            let obj1 = {name: '张晋伟'}
+
+            let newObj = {}
+
+            newObj[obj1] = '我是一个对象'
+
+            console.log(newObj)
+        */
+        
+        let obj1 = {name: '张晋伟'}
+
+        let map = new Map([
+            [obj1, '我是一个对象'],
+            [123, '这是数字'],
+            [arr = ['a', 'b'], '我是一个数组']
+        ])
+        console.log(map)
+        console.log(map.size)
+
+        /*
+            方法：
+            `keys()` : 取出Map里面所有的键
+
+            `values()` : 取出Map里面所有的值
+
+            `entries()` ：取出里面所有的键和值
+        */
+        // console.log(map.keys())
+        // console.log(map.values())
+        // console.log(map.entries())
+
+        /*
+            `set()` :  增加、修改
+
+            `get()`:  获取
+
+            `has()`: 判断里面有没有这个值 true / false
+
+            `delete()` : 删除
+
+            `clear()` : 清除
+        */
+
+        // map.set('hello', '嘿嘿')
+        // console.log(map)
+        // console.log(map.get('hello'))
+        // console.log(map.get(arr))
+
+        // console.log(map.has('hello'))
+
+        // map.delete('hello')
+        // console.log(map)
+
+    </script>
+</body>
+</html>

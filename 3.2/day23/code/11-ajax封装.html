@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            ajax get方式封装
+            + @param {string} url 表示接口地址
+            + @param {object} query 表示要传递给后端的参数
+            + @param {function} success 表示成功时回调函数
+            + @param {function} error 表示失败时回调函数
+        */
+        function ajax_get(url, query, success, error){
+            //创建ajax对象
+            let xhr = new XMLHttpRequest()
+
+            //判断参数有没有
+            //把对象转成查询字符串
+            let str = '?'
+            if(query){
+                for(let key in query){
+                    //     username = 张三
+                    str += key + '=' + query[key]
+                    str += '&'
+                }
+                str = str.slice(0, -1)
+                xhr.open('get', url+str)
+            }
+            
+            //发送
+            xhr.send()
+            
+            //监听状态
+            xhr.onreadystatechange = ()=>{
+                if(xhr.readyState == 4){
+                    if(xhr.status == 200){
+                        success && success(xhr.responseText)
+                    }else{
+                        error && error()
+                    }
+                }
+            }
+        }
+        ajax_get('api/request.php', {username: '张三', password: 123}, function(data){
+            console.log(data)
+        }, function(){
+            console.log('请求失败')
+        })
+    </script>
+</body>
+</html>

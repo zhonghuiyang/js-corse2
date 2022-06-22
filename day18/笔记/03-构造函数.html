@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function fn(){
+        console.log(this.name+'汁');
+        }
+        function Factory(name,water){
+            this.name=name;
+            this.water=water;
+            this.juicing=fn;
+        }
+        let peach=new Factory('桃子',5)
+        let apple=new Factory('苹果',2)
+        peach.juicing()
+        apple.juicing()
+        console.log(peach.juicing==apple.juicing);
+        // console.log({peach.juicing}=={apple.juicing});
+        // console.log([peach.juicing]==[apple.juicing]);
+    </script>
+    
+</body>
+</html>
